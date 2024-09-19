@@ -16,7 +16,7 @@ export interface ProductCardProps {
 export function ProductCard({ title, price, description, image, altText, onClick }: ProductCardProps) {
 
     return (
-        <li className='list-none shadow-xl bg-white  rounded-lg overflow-hidden'>
+        <li className='list-none shadow-xl bg-white rounded-lg overflow-hidden'>
             <div className='h-full flex flex-col'>
                 <div className='aspect-square relative'>
                     <Image loading="lazy" src={image} alt={altText} fill style={{ objectFit: 'cover' }}  />

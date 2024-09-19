@@ -20,6 +20,7 @@ export function ProductList({ products }: ProductListProps) {
                     ({ id, title, description, price, image, altText, onClick }) => {
                         return(
                             <ProductCard
+                                key={id}
                                 id={id}
                                 title={title}
                                 description={description}

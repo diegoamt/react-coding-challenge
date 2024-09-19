@@ -1,3 +1,4 @@
+import { Header } from "./components/header";
 import { ProductList } from "./components/productList";
 
 export default async function Home() {
@@ -9,7 +10,7 @@ export default async function Home() {
 
   return (
     <>
-      <nav>here nav</nav>
+      <Header />
       <main>
         <ProductList products={products} />
       </main>

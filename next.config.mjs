@@ -1,8 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: [process.env.PUBLIC_IMAGE_DOMAIN],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: process.env.PUBLIC_IMAGE_DOMAIN,
+                port: '',
+                pathname: '/img/**',
+            },
+        ],
     },
 };
 
 export default nextConfig;
+
+
