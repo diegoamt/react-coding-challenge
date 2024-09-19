@@ -1,10 +1,21 @@
-import { Cart, Logo } from "../icons"
+import { Cart, Logo } from "../icons";
+import { Search } from "../search";
 
-export function Header() {
+interface HeaderProps {
+    isSearchVisible?: boolean;
+}
+
+export function Header({ isSearchVisible }: HeaderProps) {
 
     return (
         <nav className="bg-[#bbc0dd]">
-            <div className='container flex justify-between py-2'><Logo /><Cart className="h-16" /></div>
+            <div className='container flex items-center justify-between py-2'>
+                <Logo />
+                {isSearchVisible ? <Search placeholder="Search products ..." /> : null}
+                <a href="/cart">
+                    <Cart className="h-16 fill-gray-100 hover:fill-gray-200" />
+                </a>
+            </div>
         </nav>
     )
 }

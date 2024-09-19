@@ -14,7 +14,7 @@ export function ProductList({ products }: ProductListProps) {
     const showMoreItems = (ITEMS * page) < products.length;
 
     return (
-        <section className='container md:my-20 my-10'>
+        <section className='container md:py-20 py-10'>
             <ul className='grid lg:grid-cols-3 sm:grid-cols-2 xl:gap-8 gap-5'>
                 {products.slice(0, ITEMS * page).map(
                     ({ id, title, description, price, image, altText, onClick }) => {

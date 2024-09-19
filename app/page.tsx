@@ -10,8 +10,8 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
-      <main>
+      <Header isSearchVisible />
+      <main className="bg-[#f5f5f5]">
         <ProductList products={products} />
       </main>
     </>
