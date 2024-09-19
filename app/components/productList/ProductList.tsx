@@ -1,3 +1,5 @@
+"use client";
+
 import { ProductCardProps as Product, ProductCard } from "../productCard";
 import { useState } from "react";
 
@@ -13,7 +15,7 @@ export function ProductList({ products }: ProductListProps) {
 
     return (
         <section className='container md:my-20 my-10'>
-            <ul className='grid lg:grid-cols-3 sm:grid-cols-2 gap-5'>
+            <ul className='grid lg:grid-cols-3 sm:grid-cols-2 xl:gap-8 gap-5'>
                 {products.slice(0, ITEMS * page).map(
                     ({ id, title, description, price, image, altText, onClick }) => {
                         return(

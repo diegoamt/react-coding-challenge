@@ -19,7 +19,7 @@ export function ProductCard({ title, price, description, image, altText, onClick
         <li className='list-none shadow-xl bg-white  rounded-lg overflow-hidden'>
             <div className='h-full flex flex-col'>
                 <div className='aspect-square relative'>
-                    <Image loading="lazy" src={image} alt={altText} fill objectFit="cover" />
+                    <Image loading="lazy" src={image} alt={altText} fill style={{ objectFit: 'cover' }}  />
                     <button
                         onClick={onClick}
                         title="Add item to Shopping Cart"
