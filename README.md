@@ -2,35 +2,42 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
-
+Install project dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application running.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run unit tests:
+```bash
+npm run test
+```
 
-## Learn More
+Run Storybook to see components:
+```bash
+npm run storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Implementation Details
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tech Stack:
+- [Next.js](https://nextjs.org)
+- [Tailwind](https://tailwindcss.com)
+- [StorybookJS](https://storybook.js.org/)
+- [Testing Library](https://testing-library.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Features:
+- Server side rendering without cache for Products using the API https://fakestoreapi.com/products
+- Add and Remove items on the Shopping Cart: Cart state is handled using React Context and Local Storage.
+- Local pagination to show more Products.
+- Search by keyword: This search is only performed using product titles. To perform a search you need to click the search icon (button) or pressing ENTER.
+- StorybookJS to show components UI.
+- Responsive Design.
+- A11y: Semantic HTML, aria labels, headings order, and more.
+- Web performance: lazy loading for Images.
