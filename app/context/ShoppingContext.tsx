@@ -38,12 +38,12 @@ const reducer = (state: ShoppingState, action: Action) => {
 };
 
 export const ShoppingProvider = ({ children }: { children: ReactNode }) => {
-  const [item, setItem] = useLocalStorage('cart', []);
-  const [state, dispatch] = useReducer(reducer, { cart: item, search: '' });
+  const [storedValue, setStoredValue] = useLocalStorage<ShoppingCartProduct[]>('cart', []);
+  const [state, dispatch] = useReducer(reducer, { cart: storedValue, search: '' });
 
   useEffect(() => {
-    setItem(state.cart);
-  }, [state.cart]);
+    setStoredValue(state.cart);
+  }, [state.cart, setStoredValue]);
 
   return (
     <ShoppingContext.Provider value={{ state, dispatch }}>
