@@ -5,18 +5,19 @@ import React, { createContext, useReducer, useContext, ReactNode, useEffect } fr
 import { useLocalStorage } from '@/lib/hooks';
 import { ShoppingCartProduct } from '@/lib/types';
 
-interface CartState {
+interface ShoppingState {
   cart: ShoppingCartProduct[];
+  search: string;
 }
 
-type CartAction = { type: 'ADD_PRODUCT'; payload: ShoppingCartProduct } | { type: 'REMOVE_PRODUCT'; payload: { id: number } };
+type Action = { type: 'ADD_PRODUCT'; payload: ShoppingCartProduct } | { type: 'REMOVE_PRODUCT'; payload: { id: number } } | { type: 'SEARCH', payload: string };
 
-const CartContext = createContext<{
-  state: CartState;
-  dispatch: React.Dispatch<CartAction>;
+const ShoppingContext = createContext<{
+  state: ShoppingState;
+  dispatch: React.Dispatch<Action>;
 } | null>(null);
 
-const cartReducer = (state: CartState, action: CartAction) => {
+const reducer = (state: ShoppingState, action: Action) => {
   switch (action.type) {
     case 'ADD_PRODUCT':
       const product = state.cart.find((item) => item.id === action.payload.id);
@@ -29,28 +30,30 @@ const cartReducer = (state: CartState, action: CartAction) => {
       return { ...state, cart: [...state.cart, action.payload] };
     case 'REMOVE_PRODUCT':
       return { ...state, cart: state.cart.filter(product => product.id !== action.payload.id) };
+    case 'SEARCH':
+      return {...state, search: action.payload }
     default:
       return state;
   }
 };
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export const ShoppingProvider = ({ children }: { children: ReactNode }) => {
   const [item, setItem] = useLocalStorage('cart', []);
-  const [state, dispatch] = useReducer(cartReducer, { cart: item });
+  const [state, dispatch] = useReducer(reducer, { cart: item, search: '' });
 
   useEffect(() => {
     setItem(state.cart);
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <ShoppingContext.Provider value={{ state, dispatch }}>
       {children}
-    </CartContext.Provider>
+    </ShoppingContext.Provider>
   );
 };
 
-export const useCart = () => {
-  const context = useContext(CartContext);
+export const useShoppingState = () => {
+  const context = useContext(ShoppingContext);
 
   if (!context) {
     throw new Error();

@@ -5,14 +5,14 @@ import { useMemo } from "react";
 import { Cart, Logo } from "../icons";
 import { Search } from "../search";
 
-import { useCart } from "@/app/context/CartContext";
+import { useShoppingState } from "@/app/context/ShoppingContext";
 
 interface HeaderProps {
     isSearchVisible?: boolean;
 }
 
 export function Header({ isSearchVisible }: HeaderProps) {
-    const { state } = useCart();
+    const { state } = useShoppingState();
 
     const totalCount = useMemo(() => state.cart.reduce((acc, current) => acc + current.count, 0), [state.cart]);
 

@@ -1,10 +1,10 @@
 "use client";
 
-import { useCart } from '@/app/context/CartContext';
+import { useShoppingState } from '@/app/context/ShoppingContext';
 import { Close } from "../icons";
 
 export function ShoppingCart() {
-    const { state, dispatch } = useCart();
+    const { state, dispatch } = useShoppingState();
 
     const removeItem = (id: number) => {
         dispatch({ type: 'REMOVE_PRODUCT', payload: { id } });

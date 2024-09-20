@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { ProductCard } from "../productCard";
 import { ShoppingCartProduct, Product } from "@/lib/types";
-import { useCart } from "@/app/context/CartContext";
+import { useShoppingState } from "@/app/context/ShoppingContext";
 import { Eye } from "../icons";
 
 export interface ProductListProps {
@@ -14,7 +14,7 @@ export interface ProductListProps {
 const ITEMS = 3;
 
 export function ProductList({ products }: ProductListProps) {
-    const { dispatch } = useCart();
+    const { state, dispatch } = useShoppingState();
     const [page, setPage] = useState(1);
     const showMoreItems = (ITEMS * page) < products.length;
 
@@ -25,8 +25,9 @@ export function ProductList({ products }: ProductListProps) {
     return (
         <section className='container md:py-20 py-10'>
             <ul className='grid lg:grid-cols-3 sm:grid-cols-2 xl:gap-8 gap-5'>
-                {products.slice(0, ITEMS * page).map(
-                    (product) => {
+                {products.slice(0, ITEMS * page)
+                    .filter((product) => state.search ? product.title.toLocaleLowerCase().includes(state.search.toLocaleLowerCase()) : true)
+                    .map((product) => {
                         return(
                             <ProductCard
                                 key={product.id}

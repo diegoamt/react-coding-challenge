@@ -1,6 +1,6 @@
 import { ShoppingCart } from './ShoppingCart';
 import { StoryFn } from '@storybook/react';
-import { CartProvider } from '@/app/context/CartContext';
+import { ShoppingProvider } from '@/app/context/ShoppingContext';
 
 export default {
     title: 'Components/Shopping Cart',
@@ -17,9 +17,9 @@ export default {
     decorators: [
         (Story: StoryFn) => (
             <div className="container">
-                <CartProvider>
+                <ShoppingProvider>
                     <Story />
-                </CartProvider>
+                </ShoppingProvider>
             </div>
         ),
     ],

@@ -1,9 +1,6 @@
 import { ProductList } from './ProductList';
-
 import { productCardMock } from '../productCard/mock';
-
-import { CartProvider } from '@/app/context/CartContext';
-
+import { ShoppingProvider } from '@/app/context/ShoppingContext';
 import { StoryFn } from '@storybook/react';
 
 export default {
@@ -14,9 +11,9 @@ export default {
     },
     decorators: [
         (Story: StoryFn) => (
-            <CartProvider>
+            <ShoppingProvider>
                 <Story />
-            </CartProvider>
+            </ShoppingProvider>
         ),
     ],
 };
