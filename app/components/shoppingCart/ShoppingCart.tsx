@@ -1,9 +1,14 @@
 "use client";
 
 import { useCart } from '@/app/context/CartContext';
+import { Close } from "../icons";
 
 export function ShoppingCart() {
     const { state, dispatch } = useCart();
+
+    const removeItem = (id: number) => {
+        dispatch({ type: 'REMOVE_PRODUCT', payload: { id } });
+    }
 
     return (
         <div className='text-gray-800'>
@@ -14,7 +19,8 @@ export function ShoppingCart() {
                             <div className="flex gap-5">
                                 <div>{count}</div>
                                 <h2 className="grow">{name}</h2>
-                                <div>{price}</div>
+                                <div>USD {price * count}</div>
+                                <button onClick={() => removeItem(id)} aria-label='hello world'><Close className='w-5 fill-gray-600 hover:fill-black' /></button>
                             </div>
                         </li>
                     )

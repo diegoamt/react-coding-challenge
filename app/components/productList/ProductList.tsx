@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ProductCard } from "../productCard";
 import { ShoppingCartProduct, Product } from "@/lib/types";
 import { useCart } from "@/app/context/CartContext";
+import { Eye } from "../icons";
 
 export interface ProductListProps {
     products: Product[];
@@ -38,9 +39,9 @@ export function ProductList({ products }: ProductListProps) {
             {showMoreItems ? <div className="mt-10 flex justify-center">
                 <button
                     onClick={() => setPage(page => page + 1)}
-                    className="bg-white border border-gray-200 text-sm font-bold rounded-xl py-4 px-20 hover:bg-gray-200"
+                    className="bg-white border border-gray-200 text-sm font-bold rounded-xl py-4 px-20 hover:bg-gray-200 flex"
                 >
-                    VER MÁS
+                    <Eye className="w-5 h-5 mr-1" /><span className="whitespace-nowrap">VER MÁS</span>
                 </button>
             </div> : null}
         </section>
