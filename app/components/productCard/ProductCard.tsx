@@ -3,25 +3,27 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
+import { ShoppingCartProduct, Product } from "@/lib/types";
+
 export interface ProductCardProps {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    image: string;
-    altText: string;
-    onClick: () => {};
+    product: Product;
+    onClick: (product: ShoppingCartProduct) => void;
 }
 
-export function ProductCard({ title, price, description, image, altText, onClick }: ProductCardProps) {
+export function ProductCard({ product, onClick }: ProductCardProps) {
+    const { id, title, price, description, image } = product;
+
+    const clickHandler = () => {
+        onClick({ id, name: title, count: 1, price });
+    }
 
     return (
         <li className='list-none shadow-xl bg-white rounded-lg overflow-hidden'>
             <div className='h-full flex flex-col'>
                 <div className='aspect-square relative'>
-                    <Image loading="lazy" src={image} alt={altText} fill style={{ objectFit: 'cover' }}  />
+                    <Image loading="lazy" src={image} alt={`Image of ${title}`} fill style={{ objectFit: 'cover' }}  />
                     <button
-                        onClick={onClick}
+                        onClick={clickHandler}
                         title="Add item to Shopping Cart"
                         className="bg-white hover:bg-gray-300 flex items-center justify-center p-0 w-10 h-10 absolute top-5 left-5 text-2xl border border-black"
                     >

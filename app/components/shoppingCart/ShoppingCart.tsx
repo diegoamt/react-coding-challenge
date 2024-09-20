@@ -1,21 +1,14 @@
+"use client";
 
-export interface ShoppingCartProduct {
-    id: number;
-    count: number;
-    name: string;
-    price: number;
-}
+import { useCart } from '@/app/context/CartContext';
 
-export interface ShoppingCartProps {
-    products: ShoppingCartProduct[];
-}
-
-export function ShoppingCart({ products }: ShoppingCartProps) {
+export function ShoppingCart() {
+    const { state, dispatch } = useCart();
 
     return (
         <div className='text-gray-800'>
             <ul className='bg-white p-10 rounded-xl flex flex-col gap-2'>
-                {products.map(({ id, count, name, price }) => {
+                {state.cart.map(({ id, count, name, price }) => {
                     return (
                         <li key={id} className="border-b-[1px] pb-2">
                             <div className="flex gap-5">
@@ -26,6 +19,7 @@ export function ShoppingCart({ products }: ShoppingCartProps) {
                         </li>
                     )
                 })}
+                {state.cart.length === 0 ? <div className='text-xl'>Your Cart is empty</div> : null}
             </ul>
         </div>
     )
