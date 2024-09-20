@@ -4,7 +4,8 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: process.env.PUBLIC_IMAGE_DOMAIN,
+                // hostname: process.env.PUBLIC_IMAGE_DOMAIN,
+                hostname: 'fakestoreapi.com',
                 port: '',
                 pathname: '/img/**',
             },

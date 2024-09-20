@@ -11,7 +11,7 @@ export interface SearchProps {
 
 export function Search({ placeholder }: SearchProps) {
     const [text, setText] = useState('');
-    const { state, dispatch } = useShoppingState();
+    const { dispatch } = useShoppingState();
 
     const onsubmit = (e: FormEvent ) => {
         e.preventDefault();
@@ -24,7 +24,7 @@ export function Search({ placeholder }: SearchProps) {
     };
 
     return (
-        <div>
+        <div data-testid='search'>
             <form onSubmit={onsubmit}>
                 <div className="relative">
                     <input
@@ -33,7 +33,7 @@ export function Search({ placeholder }: SearchProps) {
                         className="rounded-xl px-6 py-1 lg:min-w-[400px] pr-10"
                         placeholder={placeholder}
                     />
-                    <button className="absolute right-1 top-1">
+                    <button className="absolute right-1 top-1" aria-label="Search by keyword">
                         <SearchIcon className="w-5 stroke-gray-600 hover:stroke-black" />
                     </button>
                 </div>

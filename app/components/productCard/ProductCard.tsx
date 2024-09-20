@@ -18,13 +18,14 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     }
 
     return (
-        <li className='list-none shadow-xl bg-white rounded-lg overflow-hidden'>
+        <li className='list-none shadow-xl bg-white rounded-lg overflow-hidden' data-testid='product-card'>
             <div className='h-full flex flex-col'>
                 <div className='aspect-square relative'>
                     <Image loading="lazy" src={image} alt={`Image of ${title}`} fill style={{ objectFit: 'cover' }}  />
                     <button
                         onClick={clickHandler}
                         title="Add item to Shopping Cart"
+                        aria-label="Add item to Shopping Cart"
                         className="bg-white hover:bg-gray-300 flex items-center justify-center p-0 w-10 h-10 absolute top-5 left-5 text-2xl border border-black"
                     >
                         +

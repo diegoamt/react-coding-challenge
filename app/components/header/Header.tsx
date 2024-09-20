@@ -18,10 +18,10 @@ export function Header({ isSearchVisible }: HeaderProps) {
 
     return (
         <nav className="bg-[#bbc0dd]">
-            <div className='container flex items-center justify-between py-2'>
+            <div className="container flex items-center justify-between py-2">
                 <Logo />
                 {isSearchVisible ? <Search placeholder="Search products ..." /> : null}
-                <a href="/cart">
+                <a href="/cart" data-testid="shopping-cart-link" aria-label="Go to Shopping Cart">
                     <div className="relative pl-3">
                         <Cart className="h-16 fill-gray-100 hover:fill-gray-200" />
                         {totalCount > 0 ? <div className="absolute bottom-0 left-0 rounded-full h-5 w-5 flex justify-center items-center bg-gray-700 text-white font-bold">
