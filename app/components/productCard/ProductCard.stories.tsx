@@ -26,5 +26,5 @@ export default {
 };
 
 export const Default = {
-    args: { ...productCardMock }
+    args: { product: productCardMock, onClick: () => {} }
 }
